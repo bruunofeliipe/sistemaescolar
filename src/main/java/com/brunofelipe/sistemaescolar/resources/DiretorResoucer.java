@@ -1,30 +1,27 @@
 package com.brunofelipe.sistemaescolar.resources;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brunofelipe.sistemaescolar.domain.Diretor;
+import com.brunofelipe.sistemaescolar.services.DiretorService;
 
 @RestController
 @RequestMapping(value="/diretores") //boas praticas de programação
 public class DiretorResoucer {
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public List<Diretor> listar() {
-		
-		Diretor drt = new Diretor(1,"Diretor de Monitoria", null, null, null);
-		Diretor drtGeral = new Diretor(2, "Diretor Geral", null, null, null);
+	@Autowired
+	private DiretorService service;
 	
-		List<Diretor> listadeDiretores = new ArrayList<>();
-		listadeDiretores.add(drt);
-		listadeDiretores.add(drtGeral);
-		return listadeDiretores;
-		
-	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
+		Diretor obj = service.search(id);
+		return ResponseEntity.ok().body(obj);
+			
 		
 	}
 
