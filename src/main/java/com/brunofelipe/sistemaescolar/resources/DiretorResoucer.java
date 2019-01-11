@@ -23,6 +23,9 @@ public class DiretorResoucer {
 		listadeDiretores.add(drt);
 		listadeDiretores.add(drtGeral);
 		return listadeDiretores;
+		
+	
+		
 	}
 
 }
