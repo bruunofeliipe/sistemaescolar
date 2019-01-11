@@ -17,7 +17,7 @@ public class DiretorResoucer {
 	@Autowired
 	private DiretorService service;
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)  //procurando no point pelo id
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		Diretor obj = service.search(id);
 		return ResponseEntity.ok().body(obj);

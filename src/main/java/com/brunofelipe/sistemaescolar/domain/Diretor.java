@@ -55,7 +55,7 @@ public class Diretor implements Serializable {
 
 	public void setCellPhone(String cellPhone) {
 		this.cellPhone = cellPhone;
-	}
+	};
 
 	public Integer getAge() {
 		return age;
