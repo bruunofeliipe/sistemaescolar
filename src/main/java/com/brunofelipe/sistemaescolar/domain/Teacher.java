@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Diretor implements Serializable {
+public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -20,11 +20,11 @@ public class Diretor implements Serializable {
 	private Integer age;
 	private Float numberRegistration;
 	
-	public Diretor() {
+	public Teacher() {
 		
 	}
 
-	public Diretor(Integer id, String name, String cellPhone, Integer age, Float numberRegistration) {
+	public Teacher(Integer id, String name, String cellPhone, Integer age, Float numberRegistration) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -90,7 +90,7 @@ public class Diretor implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Diretor other = (Diretor) obj;
+		Teacher other = (Teacher) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
