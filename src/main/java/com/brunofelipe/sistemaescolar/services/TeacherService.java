@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.brunofelipe.sistemaescolar.domain.Teacher;
 import com.brunofelipe.sistemaescolar.repositories.TeacherRepository;
 
+
 @Service
 public class TeacherService {
 
@@ -13,8 +14,12 @@ public class TeacherService {
 	private TeacherRepository teacherrepo; // Quando declarado uma dependencia  o AutoWired ele automaticamente estancia no spring
 	
 	//Aqui está fazendo 
-	public Teacher search(Integer id) {
+	public Teacher search(Integer id)  {
 		Teacher obj = teacherrepo.findOne(id);
+		if(obj == null) {
+			throw new com.brunofelipe.sistemaescolar.services.exceptions.ObjectNotFoundException("Id não encontrado do Id:"+ id + ", tipo: " + 
+												Teacher.class.getName());
+		}
 		return obj;
 	}
 	

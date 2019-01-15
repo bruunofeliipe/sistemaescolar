@@ -22,22 +22,20 @@ public class SistemaescolarApplication implements CommandLineRunner{
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaescolarApplication.class, args);
-		
-		
-		
+					
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		Teacher tp = new Teacher(null,"Roberto","Professor de Português", null, 50,null, null);
-		Teacher tm = new Teacher(null,"Tania","Professor de Matematica", null,36, null, null);
-		Teacher th = new Teacher(null, "Marcelo","Professor de História",null,26,null,null);
+		Teacher tp = new Teacher(null,"Roberto","Professor de Português","81 998855178",36,5000.00,"011211121");
+		Teacher tm = new Teacher(null,"Tania","Professor de Matematica", "(11) 3521-8452",36, 10000.00, "0213351");
+		Teacher th = new Teacher(null, "Marcelo","Professor de História","(55) 3211-8451",26,11000.00,"355215421");
 
-		Student st1 = new Student(null, "Bruno",null, 34, null, null, null);
-		Student st2 = new Student(null,"Tereza", null,26,null,null,null);
-		Student st3 = new Student(null,"Maria", null,26,null,null,null);
+		Student st1 = new Student(null, "Bruno","(25) 1241212",20,10.00,4.0,7.0);
+		Student st2 = new Student(null, "Maria","(35) 1241212",20,10.00,4.0,7.0);
+		Student st3 = new Student(null, "Severino","(45) 1241212",20,10.00,4.0,7.0);
 		
-		tp.getStudents().addAll(Arrays.asList(st1,st3));
+		tp.getStudents().addAll(Arrays.asList(st1));
 		tm.getStudents().addAll(Arrays.asList(st2));
 		th.getStudents().addAll(Arrays.asList(st2,st3));
 		

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,20 +27,21 @@ public class Teacher implements Serializable {
 	private String cellPhone;
 	private Integer age;
 	private Double salary;
-	private Float numberRegistration;
+	private String numberRegistration;
 	
+	@JsonManagedReference // tratando point para não 
 	@ManyToMany
-	@JoinTable( name = "Teachers_and_Students",
-			joinColumns = @JoinColumn (name = "teacher_id"),
-			inverseJoinColumns = @JoinColumn(name = "student_id")
-			)
+	@JoinTable( name = "teacher_student",
+	joinColumns = @JoinColumn (name = "teacher_id"),
+	inverseJoinColumns = @JoinColumn(name = "student_id")
+	)
 	private List <Student> students = new ArrayList<>();
 	
 	public Teacher() {
 		
 	}
 
-	public Teacher(Integer id, String name,String subject, String cellPhone, Integer age,Double salary, Float numberRegistration) {
+	public Teacher(Integer id, String name,String subject, String cellPhone, Integer age,Double salary, String numberRegistration) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -105,11 +108,11 @@ public class Teacher implements Serializable {
 		this.subject = subject;
 	}
 
-	public Float getNumberRegistration() {
+	public String getNumberRegistration() {
 		return numberRegistration;
 	}
 
-	public void setNumberRegistration(Float numberRegistration) {
+	public void setNumberRegistration(String numberRegistration) {
 		this.numberRegistration = numberRegistration;
 	}
 

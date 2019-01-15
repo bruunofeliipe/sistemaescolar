@@ -8,7 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Student implements Serializable {
@@ -26,15 +30,29 @@ public class Student implements Serializable {
 	private Double noteSecond;
 	private Double average;
 	
-	
-	@ManyToMany(mappedBy= "teachers")
+	@JsonBackReference  // se trataou de um lado, não preciso mais tratar de novo
+	@ManyToMany(mappedBy="students")
 	private List<Teacher> teachers = new ArrayList<>();
 
 	
 	public Student() {
 		
+		
 	}
-	
+
+	public Student(Integer id, String name, String cellPhone, Integer age, Double noteFirst, Double noteSecond,
+			Double average) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.cellPhone = cellPhone;
+		this.age = age;
+		this.noteFirst = noteFirst;
+		this.noteSecond = noteSecond;
+		this.average = average;
+	}
+
+
 	
 	
 	public Integer getId() {
@@ -118,22 +136,6 @@ public class Student implements Serializable {
 	public void setAverage(Double average) {
 		this.average = average;
 	}
-
-
-
-	public Student(Integer id, String name, String cellPhone, Integer age, Double noteFirst, Double noteSecond,Double average) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.cellPhone = cellPhone;
-		this.age = age;
-		this.noteFirst = noteFirst;
-		this.noteSecond = noteSecond;
-		this.average = average;
-	}
-
-	
-
 
 
 	public List<Teacher> getTeachers() {
