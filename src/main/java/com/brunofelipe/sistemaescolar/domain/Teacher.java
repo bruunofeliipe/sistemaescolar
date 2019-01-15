@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -23,29 +24,31 @@ public class Teacher implements Serializable {
 	private Integer id;
 	
 	private String name;
-	private String subject;
 	private String cellPhone;
 	private Integer age;
 	private Double salary;
 	private String numberRegistration;
 	
-	@JsonManagedReference // tratando point para não 
+	@JsonManagedReference 
 	@ManyToMany
 	@JoinTable( name = "teacher_student",
 	joinColumns = @JoinColumn (name = "teacher_id"),
 	inverseJoinColumns = @JoinColumn(name = "student_id")
 	)
 	private List <Student> students = new ArrayList<>();
+
+	@OneToMany(mappedBy= "teacher")
+	private List <Discipline> disciplines = new ArrayList<>();
+	
 	
 	public Teacher() {
 		
 	}
 
-	public Teacher(Integer id, String name,String subject, String cellPhone, Integer age,Double salary, String numberRegistration) {
+	public Teacher(Integer id, String name, String cellPhone, Integer age,Double salary, String numberRegistration) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.subject = subject;
 		this.cellPhone = cellPhone;
 		this.age = age;
 		this.salary = salary;
@@ -100,13 +103,6 @@ public class Teacher implements Serializable {
 		this.age = age;
 	}
 
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
 
 	public String getNumberRegistration() {
 		return numberRegistration;
@@ -145,6 +141,14 @@ public class Teacher implements Serializable {
 		} else if (!numberRegistration.equals(other.numberRegistration))
 			return false;
 		return true;
+	}
+
+	public List <Discipline> getDisciplines() {
+		return disciplines;
+	}
+
+	public void setDisciplines(List <Discipline> disciplines) {
+		this.disciplines = disciplines;
 	}
 
 	
