@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.brunofelipe.sistemaescolar.domain.enums.TypeStudent;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
@@ -29,6 +30,7 @@ public class Student implements Serializable {
 	private Double noteFirst;
 	private Double noteSecond;
 	private Double average;
+	private Integer type;
 	
 	@JsonBackReference  // se trataou de um lado, não preciso mais tratar de novo
 	@ManyToMany(mappedBy="students")
@@ -40,8 +42,10 @@ public class Student implements Serializable {
 		
 	}
 
+	
+
 	public Student(Integer id, String name, String cellPhone, Integer age, Double noteFirst, Double noteSecond,
-			Double average) {
+			Double average, TypeStudent type) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,11 +54,11 @@ public class Student implements Serializable {
 		this.noteFirst = noteFirst;
 		this.noteSecond = noteSecond;
 		this.average = average;
+		this.type = type.getCod();
 	}
 
 
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -136,6 +140,19 @@ public class Student implements Serializable {
 	public void setAverage(Double average) {
 		this.average = average;
 	}
+
+
+
+	public TypeStudent getType() {
+		return TypeStudent.toEnum(type);
+	}
+
+
+
+	public void setType(TypeStudent type) {
+		this.type = type.getCod();
+	}
+
 
 
 	public List<Teacher> getTeachers() {

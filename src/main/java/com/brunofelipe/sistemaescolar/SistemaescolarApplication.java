@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.brunofelipe.sistemaescolar.domain.Student;
 import com.brunofelipe.sistemaescolar.domain.Teacher;
+import com.brunofelipe.sistemaescolar.domain.enums.TypeStudent;
 import com.brunofelipe.sistemaescolar.repositories.StudentRepository;
 import com.brunofelipe.sistemaescolar.repositories.TeacherRepository;
 
@@ -31,9 +32,9 @@ public class SistemaescolarApplication implements CommandLineRunner{
 		Teacher tm = new Teacher(null,"Tania","Professor de Matematica", "(11) 3521-8452",36, 10000.00, "0213351");
 		Teacher th = new Teacher(null, "Marcelo","Professor de História","(55) 3211-8451",26,11000.00,"355215421");
 
-		Student st1 = new Student(null, "Bruno","(25) 1241212",20,10.00,4.0,7.0);
-		Student st2 = new Student(null, "Maria","(35) 1241212",20,10.00,4.0,7.0);
-		Student st3 = new Student(null, "Severino","(45) 1241212",20,10.00,4.0,7.0);
+		Student st1 = new Student(null, "Bruno","(25) 1241212",20,10.00,4.0,7.0,TypeStudent.NORMALSTUDENT);
+		Student st2 = new Student(null, "Maria","(35) 1241212",20,10.00,4.0,7.0,TypeStudent.STUDENTWITHDISABILITIES);
+		Student st3 = new Student(null, "Severino","(45) 1241212",20,10.00,4.0,7.0,TypeStudent.STUDENTWITHDISABILITIES);
 		
 		tp.getStudents().addAll(Arrays.asList(st1));
 		tm.getStudents().addAll(Arrays.asList(st2));
