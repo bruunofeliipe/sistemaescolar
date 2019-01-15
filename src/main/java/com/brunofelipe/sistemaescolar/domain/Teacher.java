@@ -1,11 +1,16 @@
 package com.brunofelipe.sistemaescolar.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Teacher implements Serializable {
@@ -16,21 +21,48 @@ public class Teacher implements Serializable {
 	private Integer id;
 	
 	private String name;
+	private String subject;
 	private String cellPhone;
 	private Integer age;
+	private Double salary;
 	private Float numberRegistration;
+	
+	@ManyToMany
+	@JoinTable( name = "Teachers_and_Students",
+			joinColumns = @JoinColumn (name = "teacher_id"),
+			inverseJoinColumns = @JoinColumn(name = "student_id")
+			)
+	private List <Student> students = new ArrayList<>();
 	
 	public Teacher() {
 		
 	}
 
-	public Teacher(Integer id, String name, String cellPhone, Integer age, Float numberRegistration) {
+	public Teacher(Integer id, String name,String subject, String cellPhone, Integer age,Double salary, Float numberRegistration) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.subject = subject;
 		this.cellPhone = cellPhone;
 		this.age = age;
+		this.salary = salary;
 		this.numberRegistration = numberRegistration;
+	}
+
+	public List <Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List <Student> students) {
+		this.students = students;
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 
 	public Integer getId() {
@@ -63,6 +95,14 @@ public class Teacher implements Serializable {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public Float getNumberRegistration() {
@@ -103,6 +143,9 @@ public class Teacher implements Serializable {
 			return false;
 		return true;
 	}
+
+	
+
 
 	
 }
