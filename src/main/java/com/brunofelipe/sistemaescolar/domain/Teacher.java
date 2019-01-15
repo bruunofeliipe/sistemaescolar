@@ -54,6 +54,15 @@ public class Teacher implements Serializable {
 		this.salary = salary;
 		this.numberRegistration = numberRegistration;
 	}
+	
+	public List <Discipline> getDisciplines() {
+		return disciplines;
+	}
+
+	public void setDisciplines(List <Discipline> disciplines) {
+		this.disciplines = disciplines;
+	}
+
 
 	public List <Student> getStudents() {
 		return students;
@@ -143,13 +152,6 @@ public class Teacher implements Serializable {
 		return true;
 	}
 
-	public List <Discipline> getDisciplines() {
-		return disciplines;
-	}
-
-	public void setDisciplines(List <Discipline> disciplines) {
-		this.disciplines = disciplines;
-	}
 
 	
 

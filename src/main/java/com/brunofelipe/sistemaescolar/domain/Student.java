@@ -8,13 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.brunofelipe.sistemaescolar.domain.enums.TypeStudent;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Student implements Serializable {
@@ -30,7 +27,6 @@ public class Student implements Serializable {
 	private Integer age;
 	private Double noteFirst;
 	private Double noteSecond;
-	private Double average;
 	private Integer type;
 	
 	@JsonBackReference
@@ -54,7 +50,6 @@ public class Student implements Serializable {
 		this.age = age;
 		this.noteFirst = noteFirst;
 		this.noteSecond = noteSecond;
-		this.average = average;
 		this.type = type.getCod();
 	}
 
@@ -143,7 +138,6 @@ public class Student implements Serializable {
 
 
 	public void setAverage(Double average) {
-		this.average = average;
 	}
 
 

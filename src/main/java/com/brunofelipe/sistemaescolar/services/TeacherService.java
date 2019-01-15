@@ -22,6 +22,10 @@ public class TeacherService {
 		}
 		return obj;
 	}
-	
+
+	public Teacher insert (Teacher obj) {
+		obj.setId(null);
+		return teacherrepo.save(obj);
 	
 	}
+}

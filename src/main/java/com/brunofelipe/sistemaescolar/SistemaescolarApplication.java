@@ -1,3 +1,4 @@
+
 package com.brunofelipe.sistemaescolar;
 
 import java.util.Arrays;
@@ -33,7 +34,7 @@ public class SistemaescolarApplication implements CommandLineRunner{
 		Teacher tm = new Teacher(null,"Tania", "(11) 3521-8452",36, 10000.00, "0213351");
 		Teacher th = new Teacher(null, "Marcelo","(55) 3211-8451",26,11000.00,"355215421");
 
-		Student st1 = new Student(null, "Bruno","(25) 1241212",20,10.00,4.0,null,TypeStudent.NORMALSTUDENT);
+		Student st1 = new Student(null, "Bruno","(25) 1241212",20,10.00,4.0,null, TypeStudent.NORMALSTUDENT);
 		Student st2 = new Student(null, "Maria","(35) 1241212",20,10.00,5.5,null,TypeStudent.STUDENTWITHDISABILITIES);
 		Student st3 = new Student(null, "Severino","(45) 1241212",20,10.00,4.0,null,TypeStudent.STUDENTWITHDISABILITIES);
 		
